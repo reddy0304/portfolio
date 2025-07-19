@@ -7,11 +7,10 @@ const SectionTitle = ({ children }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.5 }}
     transition={{ duration: 0.6 }}
-    className="text-5xl font-extrabold text-center text-white mb-12 relative pb-4"
+    className="text-4xl md:text-5xl font-bold text-center mb-16 relative pb-4"
   >
     {children}
     <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-24 h-1 bg-teal-500 rounded-full"></span>
   </motion.h2>
 );
-
 export default SectionTitle;

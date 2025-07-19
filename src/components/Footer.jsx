@@ -1,14 +1,10 @@
+// src/components/Footer.jsx
 import React from 'react';
-
-const Footer = () => {
-  return (
-    <footer className="bg-black text-gray-400 py-8 text-center text-sm">
-      <div className="container mx-auto px-4">
-        <p>&copy; {new Date().getFullYear()} Matavalam Hemanth. All rights reserved.</p>
-        <p className="mt-2">Designed and Developed with ❤️ using React and Tailwind CSS.</p>
-      </div>
-    </footer>
-  );
-};
-
+import { portfolioData as footerContent } from '../data/portfolioData';
+const Footer = () => (
+  <footer className="bg-gray-900 dark:bg-black text-gray-400 py-8 text-center text-sm">
+    <p>&copy; {new Date().getFullYear()} {footerContent.name}. All rights reserved.</p>
+    <p className="mt-2">Designed & Developed with ❤️ using React and Tailwind CSS.</p>
+  </footer>
+);
 export default Footer;

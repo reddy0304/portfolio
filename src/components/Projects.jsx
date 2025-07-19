@@ -8,49 +8,49 @@ const Projects = () => {
       title: 'Safety Administration System',
       description: 'A full-stack web application for plant-wide safety digitization, comprising Training Modules and Incident Management. Uses React.js, Node.js, Express.js, and MS SQL Server.',
       techStack: ['React.js', 'Node.js', 'Express.js', 'MS SQL Server', 'Tailwind CSS', 'Chart.js'],
-      link: '#', // Placeholder, replace with actual link
+      link: 'https://github.com/reddy0304' // Placeholder, replace with actual link
     },
     {
       title: 'Task Management System',
       description: 'Full-stack MERN application to streamline task organization and improve productivity, implementing user authentication, real-time updates, and CRUD functionalities.',
       techStack: ['React.JS', 'MongoDB', 'Express.JS', 'NodeJS', 'Redux'],
-      link: '#', // Placeholder, replace with actual link
+      link: 'https://github.com/reddy0304' // Placeholder, replace with actual link
     },
     {
       title: 'Blogspot',
       description: 'A responsive blogging site where users can create blogs and share with the public. Features user authentication and password reset emails from scratch using Nodemailer and JWT.',
       techStack: ['ReactJS', 'PostgreSQL', 'ExpressJS', 'NodeJS', 'JWT', 'Nodemailer'],
-      link: '#', // Placeholder, replace with actual link
+      link: 'https://github.com/reddy0304' // Placeholder, replace with actual link
     },
     {
       title: 'Yelp Camp',
       description: 'A full-stack web application for browsing and reviewing campgrounds. Implemented user authentication and authorization, CRUD operations, and responsive design.',
       techStack: ['Node.js', 'Express', 'MongoDB', 'Bootstrap', 'HTML', 'JavaScript'],
-      link: '#', // Placeholder, replace with actual link
+      link: 'https://github.com/reddy0304' // Placeholder, replace with actual link
     },
     {
       title: 'Customer Churn Prediction',
       description: 'Predicts whether a customer stops using a company\'s service. Involved data cleaning, handling class imbalance, and comparing XGBoost, Random Forest, SVM, and logistic regression algorithms.',
       techStack: ['Python', 'XGBoost', 'Random Forest', 'SVM', 'Logistic Regression'],
-      link: 'https://github.com/your-github/churn-prediction', // IMPORTANT: Replace with actual GitHub link
+      link: 'https://github.com/reddy0304', // IMPORTANT: Replace with actual GitHub link
     },
     {
       title: 'Sentimental Analysis with LSTM',
       description: 'Developed a sentiment analysis model using RNN with LSTM in Keras. Extracts emotions and opinions from text, enabling analysis of opinion trends and customer feedback.',
       techStack: ['Python', 'Keras', 'LSTM', 'RNN', 'TensorFlow'],
-      link: 'https://github.com/your-github/sentimental-analysis', // IMPORTANT: Replace with actual GitHub link
+      link: 'https://github.com/reddy0304', // IMPORTANT: Replace with actual GitHub link
     },
     {
       title: 'Sales Data Analysis',
       description: 'Conducted data analysis on sales data to extract critical information and built multiple interactive dashboards using Tableau for sales insights and profit analysis.',
       techStack: ['Tableau', 'Excel', 'Data Analysis'],
-      link: 'https://github.com/your-github/sales-analysis', // IMPORTANT: Replace with actual GitHub link
+      link: 'https://github.com/reddy0304', // IMPORTANT: Replace with actual GitHub link
     },
     {
       title: 'Tourism Web Application',
       description: 'A responsive web application to get recommendations for famous tourist places in India, where authenticated users can plan a trip.',
       techStack: ['Flask', 'Jinja2', 'Bootstrap', 'JavaScript', 'SQLite'],
-      link: '#', // Placeholder, replace with actual link
+      link: 'https://github.com/reddy0304' // Placeholder, replace with actual link
     },
   ];
 

@@ -1,75 +1,77 @@
-import React, { useState, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import Header from "./components/Header";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Experience from "./components/Experience";
-import Projects from "./components/Projects";
-import Achievements from "./components/Achievements";
-import Contact from "./components/Contact";
-import Footer from "./components/Footer";
-import Loader from "./components/Loader";
+// src/App.jsx
+import React, { useState, useEffect, useRef } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import About from './components/About';
+import Experience from './components/Experience';
+import Projects from './components/Projects';
+import Achievements from './components/Achievements';
+import Contact from './components/Contact';
+import Footer from './components/Footer';
+import Loader from './components/Loader';
 
-const App = () => {
-  const [theme, setTheme] = useState(() => {
-    // Load theme from localStorage or default to dark
-    return localStorage.getItem("theme") || "dark";
-  });
+export default function App() {
+    const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "dark");
+    const [isLoading, setIsLoading] = useState(true);
+    const [activeSection, setActiveSection] = useState('home');
+    const sections = useRef([]);
 
-  const [isLoading, setIsLoading] = useState(true);
+    useEffect(() => {
+        const root = window.document.documentElement;
+        root.classList.remove("light", "dark");
+        root.classList.add(theme);
+        localStorage.setItem("theme", theme);
+    }, [theme]);
 
-  // Persist theme and update <html> class
-  useEffect(() => {
-    document.documentElement.classList.remove("light", "dark");
-    document.documentElement.classList.add(theme);
-    localStorage.setItem("theme", theme);
-  }, [theme]);
+    useEffect(() => {
+        const timer = setTimeout(() => setIsLoading(false), 1500);
+        return () => clearTimeout(timer);
+    }, []);
 
-  // Simulate a loader (optional – can be removed in production)
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 2000);
-    return () => clearTimeout(timer);
-  }, []);
+    useEffect(() => {
+        if (isLoading) return;
+        sections.current = Array.from(document.querySelectorAll('section[id]'));
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) setActiveSection(entry.target.id);
+            });
+        }, { rootMargin: "-30% 0px -70% 0px" });
+        sections.current.forEach(section => observer.observe(section));
+        return () => sections.current.forEach(section => observer.unobserve(section));
+    }, [isLoading]);
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
+    const toggleTheme = () => setTheme(prev => prev === "dark" ? "light" : "dark");
 
-  const pageVariants = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } },
-    exit: { opacity: 0 },
-  };
+    const pageVariants = {
+        initial: { opacity: 0 },
+        animate: { opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } },
+        exit: { opacity: 0 },
+    };
 
-  return (
-    <div className="font-inter bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 min-h-screen">
-      {isLoading ? (
-        <Loader />
-      ) : (
+    if (isLoading) return <Loader />;
+
+    return (
         <AnimatePresence mode="wait">
-          <motion.div
-            key={theme}
-            initial="initial"
-            animate="animate"
-            exit="exit"
-            variants={pageVariants}
-          >
-            <Header toggleTheme={toggleTheme} theme={theme} />
-            <main className="overflow-hidden">
-              <Hero />
-              <About />
-              <Experience />
-              <Projects />
-              <Achievements />
-              <Contact />
-            </main>
-            <Footer />
-          </motion.div>
+            <motion.div
+                key={theme}
+                className="font-inter bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+                variants={pageVariants}
+                initial="initial"
+                animate="animate"
+                exit="exit"
+            >
+                <Header toggleTheme={toggleTheme} theme={theme} activeSection={activeSection} />
+                <main className="overflow-x-hidden">
+                    <Hero />
+                    <About />
+                    <Experience />
+                    <Projects />
+                    <Achievements />
+                    <Contact />
+                </main>
+                <Footer />
+            </motion.div>
         </AnimatePresence>
-      )}
-    </div>
-  );
-};
-
-export default App;
-
+    );
+}
