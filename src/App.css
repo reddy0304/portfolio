@@ -1,0 +1,30 @@
+/* In your global CSS */
+@import "tailwindcss";
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  body {
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+  }
+}
+
+/* Project card specific fixes */
+.project-card {
+  word-break: break-word;
+}
+
+/* Prevent horizontal overflow */
+.max-width-container {
+  max-width: 100%;
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+}
